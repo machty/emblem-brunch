@@ -1,26 +1,26 @@
 {
-  "name": "handlebars-brunch",
-  "version": "1.5.0",
-  "description": "Adds Handlebars.js support to brunch.",
-  "author": "Paul Miller (http://paulmillr.com/)",
-  "homepage": "https://github.com/brunch/handlebars-brunch",
+  "name": "emblem-brunch",
+  "version": "0.1.0",
+  "description": "Adds Emblem.js support to brunch.",
+  "author": "Alex Matchneer (http://machty.github.com/)",
+  "homepage": "https://github.com/machty/emblem-brunch",
   "repository": {
     "type": "git",
-    "url": "git@github.com:brunch/handlebars-brunch.git"
+    "url": "git@github.com:machty/emblem-brunch.git"
   },
   "main": "./lib/index",
   "scripts": {
     "prepublish": "node setup.js prepublish",
     "postpublish": "node setup.js postpublish",
-    "test": "node setup.js test",
-    "postinstall": "node setup.js postinstall"
+    "test": "node setup.js test"
   },
   "engines": {
     "node": "~0.6.10 || 0.8 || 0.9"
   },
   "dependencies": {
     "coffee-script": "1.4.0",
-    "handlebars": "1.0.7"
+    "handlebars": "git://github.com/machty/handlebars.js.git#397149429d81dbfc73a4ded9d89bd89d6983dee5",
+    "emblem": "0.1.6"
   },
   "devDependencies": {
     "mocha": "1.8.1",

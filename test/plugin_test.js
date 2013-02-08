@@ -1,4 +1,5 @@
-var Handlebars = require('handlebars');
+Handlebars = require('handlebars')
+Emblem = require('emblem')
 
 describe('Plugin', function() {
   var plugin;
@@ -16,12 +17,12 @@ describe('Plugin', function() {
   });
 
   it('should compile and produce valid result', function(done) {
-    var content = '<strong>{{weak}}</strong>';
-    var expected = '<strong>wat</strong>';
+    var content = "p = fun";
+    var expected = '<p>naw</p>';
 
     plugin.compile(content, 'template.handlebars', function(error, data) {
       expect(error).not.to.be.ok;
-      expect(eval(data)({weak: 'wat'})).to.equal(expected);
+      expect(eval(data)({fun: 'naw'})).to.equal(expected);
       done();
     });
   });

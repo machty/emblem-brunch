@@ -1,18 +1,18 @@
-handlebars = require 'handlebars'
+Emblem = require 'emblem'
 sysPath = require 'path'
 
-module.exports = class HandlebarsCompiler
+module.exports = class EmblemCompiler
   brunchPlugin: yes
   type: 'template'
-  extension: 'hbs'
-  pattern: /\.(?:hbs|handlebars)$/
+  extension: 'emblem'
+  pattern: /\.(?:emblem)$/
 
   constructor: (@config) ->
     null
 
   compile: (data, path, callback) ->
     try
-      content = handlebars.precompile data
+      content = Emblem.precompile require('handlebars'), data
       result = "module.exports = Handlebars.template(#{content});"
     catch err
       error = err
@@ -21,5 +21,5 @@ module.exports = class HandlebarsCompiler
 
   include: [
     (sysPath.join __dirname, '..', 'vendor',
-      'handlebars.runtime-1.0.rc.1.js')
+      'handlebars.runtime.js')
   ]
