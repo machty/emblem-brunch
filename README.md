@@ -11,6 +11,8 @@ Pick a plugin version that corresponds to your minor (y) brunch version.
 If you want to use git version of plugin, add
 `"emblem-brunch": "git+https://github.com/machty/emblem-brunch.git"`.
 
+Download [Emblem](http://emblemjs.com) and [Handlebars](http://handlebarsjs.com) to the `vendor` directory.
+
 ## Usage
 
 ```coffeescript
@@ -28,6 +30,10 @@ exports.config =
         handlebars: 'vendor/handlebars.js'
         emblem: 'vendor/emblem.js'
 ```
+
+Note: `handlebars.js` and `emblem.js` are placed in `vendor/`, not `vendor/scripts/`,
+because you don't need them in the built app. In the built app, you only need
+`handlebars.runtime.js`.
 
 Then, require templates in your main script.
 
