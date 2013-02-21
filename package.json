@@ -19,8 +19,7 @@
   },
   "dependencies": {
     "coffee-script": "1.4.0",
-    "handlebars": "git://github.com/machty/handlebars.js.git#397149429d81dbfc73a4ded9d89bd89d6983dee5",
-    "emblem": "0.1.6"
+    "jsdom": "0.2"
   },
   "devDependencies": {
   }
