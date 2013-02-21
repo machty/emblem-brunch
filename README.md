@@ -1,4 +1,4 @@
-## handlebars-brunch
+## emblem-brunch
 
 Adds [Emblem](http://emblemjs.com/) support to
 [brunch](http://brunch.io).
