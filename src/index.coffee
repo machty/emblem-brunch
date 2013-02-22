@@ -10,10 +10,16 @@ module.exports = class EmblemCompiler
 
   setup: (@config) ->
     @window = jsdom.jsdom().createWindow()
-    @window.run fs.readFileSync @config.files.templates.paths.jquery, 'utf8'
-    @window.run fs.readFileSync @config.files.templates.paths.handlebars, 'utf8'
-    @window.run fs.readFileSync @config.files.templates.paths.emblem, 'utf8'
-    @window.run fs.readFileSync @config.files.templates.paths.ember, 'utf8'
+    paths = @config.files.templates.paths
+    if paths.jquery
+      @window.run fs.readFileSync paths.jquery, 'utf8'
+    @window.run fs.readFileSync paths.handlebars, 'utf8'
+    @window.run fs.readFileSync paths.emblem, 'utf8'
+    if paths.ember
+      @window.run fs.readFileSync paths.ember, 'utf8'
+      @ember = true
+    else
+      @ember = false
 
   constructor: (@config) ->
     if @config.files.templates?.paths?
@@ -24,13 +30,17 @@ module.exports = class EmblemCompiler
     if not @window?
       return callback "files.templates.paths must be set in your config", {}
     try
-      content = @window.Emblem.precompile @window.Ember.Handlebars, data
-      path = path
-        .replace(new RegExp('\\\\', 'g'), '/')
-        .replace(/^app\//, '')
-        .replace(/^templates\//, '')
-        .replace(/\.\w+$/, '')
-      result = "Ember.TEMPLATES[#{JSON.stringify(path)}] = Ember.Handlebars.template(#{content});module.exports = module.id;"
+      if @ember
+        path = path
+          .replace(new RegExp('\\\\', 'g'), '/')
+          .replace(/^app\//, '')
+          .replace(/^templates\//, '')
+          .replace(/\.\w+$/, '')
+        content = @window.Emblem.precompile @window.Ember.Handlebars, data
+        result = "Ember.TEMPLATES[#{JSON.stringify(path)}] = Ember.Handlebars.template(#{content});module.exports = module.id;"
+      else
+        content = @window.Emblem.precompile @window.Handlebars, data
+        result = "module.exports = Handlebars.template(#{content});"
     catch err
       error = err
     finally

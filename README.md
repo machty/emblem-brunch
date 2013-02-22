@@ -25,6 +25,8 @@ exports.config =
       defaultExtension: 'emblem'
       joinTo: 'javascripts/app.js'
       paths:
+        # If you don't specify jquery and ember there,
+        # raw (non-Emberized) Handlebars templates will be compiled.
         jquery: 'vendor/scripts/jquery-1.9.0.min.js'
         ember: 'vendor/scripts/ember-latest.js'
         handlebars: 'vendor/handlebars.js'
@@ -35,7 +37,9 @@ Note: `handlebars.js` and `emblem.js` are placed in `vendor/`, not `vendor/scrip
 because you don't need them in the built app. In the built app, you only need
 `handlebars.runtime.js`.
 
-Then, require templates in your main script.
+### With Ember
+
+Require templates in your main script.
 
 ```coffeescript
 require 'templates/application'
@@ -43,6 +47,14 @@ require 'templates/index'
 ```
 
 This will configure `Ember.TEMPLATES` automatically.
+
+### Without Ember
+
+Require templates where you need them.
+
+```coffeescript
+index_template = require 'templates/index'
+```
 
 ## Credits
 
