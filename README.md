@@ -11,7 +11,7 @@ Pick a plugin version that corresponds to your minor (y) brunch version.
 If you want to use git version of plugin, add
 `"emblem-brunch": "git+https://github.com/machty/emblem-brunch.git"`.
 
-Download [Emblem](http://emblemjs.com) and [Handlebars](http://handlebarsjs.com) to the `vendor` directory.
+Download [Emblem](http://emblemjs.com) and [Handlebars](http://handlebarsjs.com).
 
 ## Usage
 
@@ -29,13 +29,9 @@ exports.config =
         # raw (non-Emberized) Handlebars templates will be compiled.
         jquery: 'vendor/scripts/jquery-1.9.0.min.js'
         ember: 'vendor/scripts/ember-latest.js'
-        handlebars: 'vendor/handlebars.js'
-        emblem: 'vendor/emblem.js'
+        handlebars: 'handlebars.js'
+        emblem: 'emblem.js'
 ```
-
-Note: `handlebars.js` and `emblem.js` are placed in `vendor/`, not `vendor/scripts/`,
-because you don't need them in the built app. In the built app, you only need
-`handlebars.runtime.js`.
 
 ### With Ember
 
