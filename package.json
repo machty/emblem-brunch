@@ -9,11 +9,7 @@
     "url": "git@github.com:machty/emblem-brunch.git"
   },
   "main": "./lib/index",
-  "scripts": {
-    "prepublish": "node setup.js prepublish",
-    "postpublish": "node setup.js postpublish",
-    "test": "node setup.js test"
-  },
+  "scripts": { },
   "engines": {
     "node": "~0.6.10 || 0.8 || 0.9"
   },
